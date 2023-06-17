@@ -1,0 +1,15 @@
+extends layout 
+
+block content 
+
+  h1 #{title}: #{genre.name}
+
+  ul 
+    each gen in GenreinBooks  
+      li 
+        p #{gen.title} 
+    else 
+      form(action="" method="post") 
+        .form-group 
+          input#genreid(type="hidden" name="genreid" required='true', value=genre._id)
+        button.btn.btn-primary(type="submit") Delete 

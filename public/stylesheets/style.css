@@ -1,0 +1,73 @@
+body {
+  padding: 20px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: azure;
+  background-color: #1c2f86
+}
+
+h2 {
+  padding-left: 20px;
+}
+
+button {
+  width: 8rem;
+}
+
+#reset {
+  margin-left: 7px;
+
+}
+
+a {
+  color: #0ed4ee;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+a:hover {
+  color: #fff;
+}
+
+.sidebar-nav {
+  margin-top: 7px;
+  padding: 0;
+  list-style: none;
+}
+
+.div-page-detail {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+hr {
+  border-color: #bdc7c9;
+}
+
+p {
+  margin-top: 5px;
+}
+
+dd {
+  font-size: 15px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.genre-list {
+  display: inline;
+  padding-right: 10px;
+  margin: 0;
+}
+
+.genre-name {
+  font-size: 17px;
+  padding: 0;
+  margin: 0;
+}
+
+.checkbox-input {
+  height: 15px;
+  width: 15px;
+  padding: 0;
+  margin: 0;
+
+}

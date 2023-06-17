@@ -1,0 +1,18 @@
+extends layout 
+
+block content 
+  h1 Name: #{author.name}
+  p #{author.d_b_formatted} - #{author.d_d_formatted}
+
+  div(class="div-page-detail") 
+
+    h3 Books    
+
+    dl 
+      each book in all_book_by_author
+        dt 
+          a(href= book.url) #{book.title} 
+        dd #{book.summary}         
+
+      else 
+        p This author has no books            

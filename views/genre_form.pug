@@ -1,0 +1,25 @@
+extends layout 
+
+block content 
+
+   h1 #{title}
+
+   if allBookshasGenre.length > 0
+      p This genre is being used by the following books, it cannot be deleted until the book(s) are deleted.
+      ul 
+         each book in allBookshasGenre 
+            li 
+               p #{book.title}
+   else             
+      form(action=``, method="post") 
+         .form-group       
+            label#title(for="genre_name") Name:        
+            input(name="genre_name" class="form-control" type="text",
+            placeholder="Fantasy, Poetry etc.",
+            value=(undefined===genre ? '': genre.name), required='true')                 
+         button(class="btn btn-primary" type='submit') Submit
+
+      if errors 
+         ul 
+            for error in errors 
+               li!= error.msg          

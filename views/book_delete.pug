@@ -1,0 +1,24 @@
+extends layout 
+
+block content 
+
+  h1 #{title} : #{book.title}
+
+  ul
+    each instance in book_instances          
+      li 
+        p #{instance.imprint} - 
+          if instance.status =='Available'
+            span.text-success  #{instance.status}
+          else if instance.status == 'Maintenance'
+            span.text-danger   #{instance.status}
+          else
+            span.text-warning  #{instance.status} 
+
+    else         
+      p #[strong This book can be deleted.]
+        form(action="" method="post") 
+          .form-group 
+            input#book_id.form-control(type="hidden" name='book_id' required='true', value=book._id)    
+          button.btn.btn-primary(type="submit") Delete  
+

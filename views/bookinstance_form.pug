@@ -1,0 +1,39 @@
+extends layout 
+
+block content 
+
+   h1 #{title}
+
+
+   form(action="" method="post") 
+      .form-group 
+         label(for="book") Book: 
+         select#book.form-control(name="book" placeholder='Select Book', required= 'true') 
+            - book_list.sort(function (a, b){ let textA=a.title; let textB= b.title; return (textA<textB)? -1 : (textA> textB)? 1 :0 })
+               for book in book_list
+                  option(value= book._id, selected=(selected_book==book._id.toString() ?  'selected' : false )) #{book.title}
+      .form-group 
+         label(for="imprint") Imprint: 
+         input#imprint.form-control(type="text", name="imprint",
+         placeholder="Publisher and Date Information",required='true',
+         value=(undefined=== bookinstance ? '': bookinstance.imprint))                
+      .form-group 
+         label(for="status") Status: 
+         select#status.form-control(type='select' placeholder='Select status' name='status' required='true' )
+            if bookinstance 
+               for status of statuses 
+                  option(value= status , selected=(bookinstance.status == status ? 'selected' : false) ) #{status}                                                 
+            else 
+               for status of statuses 
+                  option(value= status ) #{status}    
+      .form-group 
+         label(for="due_back") Date when Book available:
+         input#due_back.form-control(type="date", name="due_back",
+         value=(undefined === bookinstance ? '': bookinstance.due_back_formatted  ))               
+      button.btn.btn-primary(type="submit") Submit
+   br
+   if errors 
+      ul 
+         for error in errors 
+            li!= error.msg
+
