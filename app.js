@@ -3,13 +3,14 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
+const config = require("./config");
 
 const dev_db_url =
   "mongodb+srv://CEME82:WmnFyEvgl5DEBJYG@cluster0.wa48p5z.mongodb.net/local_library?retryWrites=true&w=majority";
 // Set up ConnectionString DB
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const MongoDB = dev_db_url;
+const MongoDB = config.MONGODB_URI || dev_db_url;
 main();
 
 async function main() {
