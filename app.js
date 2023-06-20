@@ -4,18 +4,19 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-const { mainModule } = require("process");
-
+const dev_db_url =
+  "mongodb+srv://CEME82:WmnFyEvgl5DEBJYG@cluster0.wa48p5z.mongodb.net/local_library?retryWrites=true&w=majority";
 // Set up ConnectionString DB
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const MongoDB =
-  "mongodb+srv://CEME82:WmnFyEvgl5DEBJYG@cluster0.wa48p5z.mongodb.net/local_library?retryWrites=true&w=majority";
-main().catch((err) => console.log(err));
+const MongoDB = dev_db_url;
+main();
 
 async function main() {
-  await mongoose.connect(MongoDB);
-  console.log("Conexion exitosa");
+  await mongoose
+    .connect(MongoDB)
+    .then(console.log("Conexion exitosa"))
+    .catch((err) => console.log(err));
 }
 
 //import routers modules
@@ -32,7 +33,7 @@ var app = express();
 const RateLimit = require("express-rate-limit");
 const limiter = RateLimit({
   windowsMs: 1 * 60 * 1000,
-  max: 20,
+  max: 30,
 });
 app.use(limiter);
 
